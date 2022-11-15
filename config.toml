@@ -1,0 +1,27 @@
+baseURL = "http://blog.maxiaofa.com/"
+canonifyurls = true
+languageCode = "zh-cn"
+theme = "tale-hugo"
+defaultContentLanguageInSubdir= true
+
+
+title = "maxiaofa - blog"
+
+themeVariant = "black"
+disableSearch = true
+editURL = "https://github.com/maxiaof/maxiaofa.github.io/"
+
+[markup]
+[markup.tableOfContents]
+endLevel = 3
+ordered = false
+startLevel = 2
+
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true
+
+[menu]
+[[menu.main]]
+  name = "学习"
+  url = "/study/"
