@@ -1,23 +1,110 @@
-<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>MyBatis一对多分页 &#183; maxiaofa - blog</title><link rel=stylesheet href=http://blog.maxiaofa.com/css/style.css><link rel=stylesheet href=http://blog.maxiaofa.com/css/fonts.css><link rel=icon href=http://blog.maxiaofa.com/favicon.ico><link rel=icon type=image/png sizes=32x32 href=http://blog.maxiaofa.com/images/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=http://blog.maxiaofa.com/images/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=http://blog.maxiaofa.com/images/apple-touch-icon.png><link href rel=alternate type=application/rss+xml title="maxiaofa - blog"><script src=http://blog.maxiaofa.com/js/darkmode.js></script></head><body><nav class=nav><div class=nav-container><a href=http://blog.maxiaofa.com/><h2 class=nav-title>maxiaofa - blog</h2></a><ul><li><a href=http://blog.maxiaofa.com/study/><span>学习</span></a></li></ul></div></nav><main><div class=post><div class=post-info></div><h1 class=post-title>MyBatis一对多分页</h1><div class=post-line></div><h1 id=一对多分页适用于一对一>一对多分页(适用于一对一)</h1><h2 id=11-实例sql>1.1 实例SQL</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#66d9ef>SELECT</span>
-</span></span><span style=display:flex><span>	<span style=color:#f92672>*</span> 
-</span></span><span style=display:flex><span><span style=color:#66d9ef>FROM</span>
-</span></span><span style=display:flex><span>	tab_1 t1
-</span></span><span style=display:flex><span>	<span style=color:#66d9ef>LEFT</span> <span style=color:#66d9ef>JOIN</span> tab_2 t2 <span style=color:#66d9ef>ON</span> t1.id <span style=color:#f92672>=</span> t2.t1_id 
-</span></span><span style=display:flex><span>	<span style=color:#66d9ef>LIMIT</span> <span style=color:#ae81ff>0</span>,<span style=color:#ae81ff>10</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>-- 当第一个用户有十条地址数据,那么上面的查询0,10,刚好是第一个用户的分页完成,此时再进行一对多封装,将会导致封装之后,仅有一个用户数据,分页不准确
-</span></span></span></code></pre></div><h2 id=12-解决办法>1.2 解决办法</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=display:flex><span><span style=color:#75715e>&lt;!--mybatis实体映射xml中如下配制--&gt;</span>
-</span></span><span style=display:flex><span><span style=color:#f92672>&lt;resultMap&gt;</span>
-</span></span><span style=display:flex><span>    ...
-</span></span><span style=display:flex><span>     <span style=color:#f92672>&lt;collection</span> <span style=color:#a6e22e>property=</span><span style=color:#e6db74>&#34;t2&#34;</span>  <span style=color:#a6e22e>ofType=</span><span style=color:#e6db74>&#34;tab2&#34;</span>
-</span></span><span style=display:flex><span>                    <span style=color:#a6e22e>select=</span><span style=color:#e6db74>&#34;selectTab2List&#34;</span> <span style=color:#a6e22e>column=</span><span style=color:#e6db74>&#34;{t2_id=id}&#34;</span><span style=color:#f92672>/&gt;</span>
-</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/resultMap&gt;</span>
-</span></span></code></pre></div><pre tabindex=0><code>其中关键点有两个
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+		
+		
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>MyBatis一对多分页 &middot; maxiaofa - blog</title>
+
+		
+		<link rel="stylesheet" href="https://blog.maxiaofa.com/css/style.css">
+		<link rel="stylesheet" href="https://blog.maxiaofa.com/css/fonts.css">
+		
+		<link rel="icon" href="https://blog.maxiaofa.com/favicon.ico"/>
+		<link rel="icon" type="image/png" sizes="32x32" href="https://blog.maxiaofa.com/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://blog.maxiaofa.com/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="https://blog.maxiaofa.com/images/apple-touch-icon.png">
+
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="maxiaofa - blog" />
+
+		<script src="https://blog.maxiaofa.com/js/darkmode.js"></script>
+	</head>
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="https://blog.maxiaofa.com/">
+					
+						<h2 class="nav-title">maxiaofa - blog</h2>
+					
+				</a>
+				<ul>
+    
+    
+        <li>
+            <a href="https://blog.maxiaofa.com/study/">
+                
+                <span>学习</span>
+                
+            </a>
+        </li>
+    
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	
+
+
+        <div class="post">
+		<div class="post-info">
+        
+</div>
+
+		<h1 class="post-title">MyBatis一对多分页</h1>
+<div class="post-line"></div>
+
+		
+
+		<h1 id="一对多分页适用于一对一">一对多分页(适用于一对一)</h1>
+<h2 id="11-实例sql">1.1 实例SQL</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">*</span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span>
+</span></span><span style="display:flex;"><span>	tab_1 t1
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">LEFT</span> <span style="color:#66d9ef">JOIN</span> tab_2 t2 <span style="color:#66d9ef">ON</span> t1.id <span style="color:#f92672">=</span> t2.t1_id 
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 当第一个用户有十条地址数据,那么上面的查询0,10,刚好是第一个用户的分页完成,此时再进行一对多封装,将会导致封装之后,仅有一个用户数据,分页不准确
+</span></span></span></code></pre></div><h2 id="12-解决办法">1.2 解决办法</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;!--mybatis实体映射xml中如下配制--&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;resultMap&gt;</span>
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;collection</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;t2&#34;</span>  <span style="color:#a6e22e">ofType=</span><span style="color:#e6db74">&#34;tab2&#34;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">select=</span><span style="color:#e6db74">&#34;selectTab2List&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;{t2_id=id}&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/resultMap&gt;</span>
+</span></span></code></pre></div><pre tabindex="0"><code>其中关键点有两个
 
 1.select=“selectTab2List”
 指定嵌套语句的具体执行语句id
 
 2. column=&#34;{t2_id=id}&#34;
 指定嵌套语句的关联条件,我将主表的字段id,起了一个别名叫做t2_id
-</code></pre></div><div class=pagination><a href=http://blog.maxiaofa.com/study/nginx/nginx%E9%85%8D%E7%BD%AE/ class="left arrow">&#8592;</a>
-<a href=http://blog.maxiaofa.com/study/linux/linux%E5%91%BD%E4%BB%A4/ class="right arrow">&#8594;</a>
-<a href=# class=top>Top</a></div></main><footer><span>&copy; <time datetime="2022-11-16 03:13:52.129975505 +0000 UTC m=+0.071330141">2022</time> . Made with <a href=https://gohugo.io>Hugo</a> using the <a href=https://github.com/EmielH/tale-hugo/>Tale</a> theme.</span></footer></body></html>
+</code></pre>
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="https://blog.maxiaofa.com/study/nginx/nginx%E9%85%8D%E7%BD%AE/" class="left arrow">&#8592;</a>
+		<a href="https://blog.maxiaofa.com/study/linux/linux%E5%91%BD%E4%BB%A4/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			
+			<span>
+			&copy; <time datetime="2022-11-16 03:23:07.890848714 &#43;0000 UTC m=&#43;0.064175930">2022</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

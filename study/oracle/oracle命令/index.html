@@ -1,69 +1,172 @@
-<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Oracle命令 &#183; maxiaofa - blog</title><link rel=stylesheet href=http://blog.maxiaofa.com/css/style.css><link rel=stylesheet href=http://blog.maxiaofa.com/css/fonts.css><link rel=icon href=http://blog.maxiaofa.com/favicon.ico><link rel=icon type=image/png sizes=32x32 href=http://blog.maxiaofa.com/images/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=http://blog.maxiaofa.com/images/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=http://blog.maxiaofa.com/images/apple-touch-icon.png><link href rel=alternate type=application/rss+xml title="maxiaofa - blog"><script src=http://blog.maxiaofa.com/js/darkmode.js></script></head><body><nav class=nav><div class=nav-container><a href=http://blog.maxiaofa.com/><h2 class=nav-title>maxiaofa - blog</h2></a><ul><li><a href=http://blog.maxiaofa.com/study/><span>学习</span></a></li></ul></div></nav><main><div class=post><div class=post-info></div><h1 class=post-title>Oracle命令</h1><div class=post-line></div><h2 id=1启停oracle>1、启停Oracle</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#75715e>----暂停
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>shutdown <span style=color:#66d9ef>immediate</span>;
-</span></span><span style=display:flex><span><span style=color:#75715e>----启动
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>startup;
-</span></span></code></pre></div><h2 id=2删除>2、删除</h2><h3 id=21删除表空间>2.1、删除表空间</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#66d9ef>DROP</span> TABLESPACE tbs_xxx <span style=color:#66d9ef>INCLUDING</span> CONTENTS <span style=color:#66d9ef>AND</span> DATAFILES;
-</span></span></code></pre></div><h3 id=22删除用户>2.2删除用户</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#66d9ef>drop</span> <span style=color:#66d9ef>user</span> xxx <span style=color:#66d9ef>cascade</span>;
-</span></span></code></pre></div><h3 id=23删除数据文件>2.3删除数据文件</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#66d9ef>alter</span> <span style=color:#66d9ef>database</span> datafile <span style=color:#e6db74>&#39;E:\xxx\xxx.DBF ’ offline drop;
-</span></span></span></code></pre></div><h3 id=24删除表数据>2.4删除表数据</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#66d9ef>TRUNCATE</span> <span style=color:#66d9ef>TABLE</span> <span style=color:#960050;background-color:#1e0010>表名；</span>
-</span></span></code></pre></div><h3 id=25删除序列>2.5删除序列</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#66d9ef>DROP</span> SEQUENCE seq_sys_menu;
-</span></span></code></pre></div><h2 id=3修改>3、修改</h2><h3 id=31修改字符集>3.1、修改字符集</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#75715e>--查询字符集
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>Select</span> userenv(<span style=color:#e6db74>&#39;language&#39;</span>) <span style=color:#66d9ef>From</span> dual;
-</span></span><span style=display:flex><span><span style=color:#75715e>--修改字符集
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>sqlplus sys<span style=color:#f92672>/</span>sys <span style=color:#66d9ef>as</span> sysdba;
-</span></span><span style=display:flex><span>shutdown <span style=color:#66d9ef>immediate</span>;
-</span></span><span style=display:flex><span>startup mount;
-</span></span><span style=display:flex><span><span style=color:#66d9ef>alter</span> <span style=color:#66d9ef>system</span> enable restricted <span style=color:#66d9ef>session</span>;
-</span></span><span style=display:flex><span><span style=color:#66d9ef>alter</span> <span style=color:#66d9ef>system</span> <span style=color:#66d9ef>set</span> job_queue_processes<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>;
-</span></span><span style=display:flex><span><span style=color:#66d9ef>alter</span> <span style=color:#66d9ef>system</span> <span style=color:#66d9ef>set</span> aq_tm_processes<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>;
-</span></span><span style=display:flex><span><span style=color:#66d9ef>alter</span> <span style=color:#66d9ef>database</span> <span style=color:#66d9ef>open</span>;
-</span></span><span style=display:flex><span><span style=color:#66d9ef>alter</span> <span style=color:#66d9ef>database</span> character <span style=color:#66d9ef>set</span> internal_use ZHS16GBK;
-</span></span><span style=display:flex><span>shutdown <span style=color:#66d9ef>immediate</span>;
-</span></span><span style=display:flex><span>startup;
-</span></span></code></pre></div><h3 id=32修改序列值>3.2、修改序列值</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#66d9ef>select</span> <span style=color:#66d9ef>max</span>(id) <span style=color:#66d9ef>from</span> CA_RBRVS_SCORE_DETAIL;
-</span></span><span style=display:flex><span><span style=color:#66d9ef>SELECT</span> SEQ_CA_RBRVS_SCORE_DETAIL.NEXTVAL <span style=color:#66d9ef>FROM</span> DUAL;
-</span></span><span style=display:flex><span><span style=color:#66d9ef>ALTER</span> SEQUENCE SEQ_CA_RBRVS_SCORE_DETAIL <span style=color:#66d9ef>INCREMENT</span> <span style=color:#66d9ef>BY</span> <span style=color:#ae81ff>351</span>;
-</span></span><span style=display:flex><span><span style=color:#66d9ef>SELECT</span> SEQ_CA_RBRVS_SCORE_DETAIL.NEXTVAL <span style=color:#66d9ef>FROM</span> DUAL;
-</span></span><span style=display:flex><span><span style=color:#66d9ef>ALTER</span> SEQUENCE SEQ_CA_RBRVS_SCORE_DETAIL <span style=color:#66d9ef>INCREMENT</span> <span style=color:#66d9ef>BY</span> <span style=color:#ae81ff>1</span>;
-</span></span></code></pre></div><h2 id=4创建>4、创建</h2><h3 id=41创建表空间>4.1、创建表空间</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#66d9ef>create</span> tablespace tbs_xxx datafile <span style=color:#e6db74>&#39;/home/xxx.dbf&#39;</span> <span style=color:#66d9ef>size</span> <span style=color:#ae81ff>1024</span>m AUTOEXTEND <span style=color:#66d9ef>ON</span> <span style=color:#66d9ef>NEXT</span> <span style=color:#ae81ff>50</span>M MAXSIZE UNLIMITED;
-</span></span></code></pre></div><h3 id=42创建用户>4.2、创建用户</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#66d9ef>create</span> <span style=color:#66d9ef>user</span> xxx identified <span style=color:#66d9ef>by</span> xxx <span style=color:#66d9ef>default</span> tablespace TBS_xxx quota unlimited <span style=color:#66d9ef>on</span> tbs_xxx;
-</span></span><span style=display:flex><span><span style=color:#66d9ef>grant</span> <span style=color:#66d9ef>connect</span> <span style=color:#66d9ef>to</span> xxx;
-</span></span><span style=display:flex><span><span style=color:#66d9ef>grant</span> resource <span style=color:#66d9ef>to</span> xxx;
-</span></span><span style=display:flex><span><span style=color:#66d9ef>grant</span> <span style=color:#66d9ef>select</span> <span style=color:#66d9ef>on</span> v_$statname <span style=color:#66d9ef>to</span> xxx;
-</span></span><span style=display:flex><span><span style=color:#66d9ef>grant</span> <span style=color:#66d9ef>select</span> <span style=color:#66d9ef>on</span> v_$sesstat <span style=color:#66d9ef>to</span> xxx;
-</span></span><span style=display:flex><span><span style=color:#66d9ef>grant</span> <span style=color:#66d9ef>select</span> <span style=color:#66d9ef>on</span> v_$session <span style=color:#66d9ef>to</span> xxx;
-</span></span><span style=display:flex><span><span style=color:#66d9ef>grant</span> <span style=color:#66d9ef>select</span> <span style=color:#66d9ef>on</span> v_$mystat <span style=color:#66d9ef>to</span> xxx;
-</span></span><span style=display:flex><span><span style=color:#75715e>-- 创建视图权限
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>GRANT</span> <span style=color:#66d9ef>CREATE</span> <span style=color:#66d9ef>VIEW</span> <span style=color:#66d9ef>TO</span> xxx;
-</span></span><span style=display:flex><span><span style=color:#75715e>-- 创建函数权限
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>GRANT</span> <span style=color:#66d9ef>CREATE</span> <span style=color:#66d9ef>ANY</span> <span style=color:#66d9ef>PROCEDURE</span> <span style=color:#66d9ef>TO</span> xxx;
-</span></span><span style=display:flex><span><span style=color:#75715e>-- 创建dblink权限
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>grant</span> <span style=color:#66d9ef>create</span> <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>database</span> link,<span style=color:#66d9ef>create</span> <span style=color:#66d9ef>database</span> link <span style=color:#66d9ef>to</span> xxx;
-</span></span><span style=display:flex><span><span style=color:#75715e>-- 数据泵权限
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>grant</span> <span style=color:#66d9ef>read</span>,<span style=color:#66d9ef>write</span> <span style=color:#66d9ef>on</span> directory dump_file <span style=color:#66d9ef>to</span> xxx;
-</span></span></code></pre></div><h3 id=43创建序列>4.3、创建序列</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#66d9ef>create</span> sequence seq_$<span style=color:#960050;background-color:#1e0010>{</span>tableName<span style=color:#960050;background-color:#1e0010>}</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>increment</span> <span style=color:#66d9ef>by</span> <span style=color:#ae81ff>1</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>start</span> <span style=color:#66d9ef>with</span> <span style=color:#ae81ff>10</span>
-</span></span><span style=display:flex><span>nomaxvalue
-</span></span><span style=display:flex><span>nominvalue
-</span></span><span style=display:flex><span><span style=color:#66d9ef>cache</span> <span style=color:#ae81ff>20</span>;
-</span></span></code></pre></div><h2 id=5数据泵导入导出解决字符集问题>5、数据泵导入导出（解决字符集问题）</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>----创建expdp默认文件路径（dump_file为自定义的变量名）
-</span></span><span style=display:flex><span>create directory dump_file as <span style=color:#e6db74>&#39;D:\EXPDP&#39;</span>;
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>----导出命令
-</span></span><span style=display:flex><span>expdp xxx/xxx directory<span style=color:#f92672>=</span>dump_file dumpfile<span style=color:#f92672>=</span>xxx.dmp
-</span></span><span style=display:flex><span>----导入命令
-</span></span><span style=display:flex><span>impdp xxx/xxx directory<span style=color:#f92672>=</span>dump_file dumpfile<span style=color:#f92672>=</span>xxx.dmp full<span style=color:#f92672>=</span>y
-</span></span></code></pre></div><h2 id=6随机数>6、随机数</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=display:flex><span>TRUNC(<span style=color:#ae81ff>1000</span><span style=color:#f92672>+</span><span style=color:#ae81ff>2000</span><span style=color:#f92672>*</span>dbms_random.value)
-</span></span></code></pre></div><h2 id=7更新一张表数据为另一张表>7、更新一张表数据为另一张表</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#66d9ef>update</span> table1 <span style=color:#66d9ef>set</span> table1.val <span style=color:#f92672>=</span> (<span style=color:#66d9ef>select</span> val <span style=color:#66d9ef>from</span> table2 <span style=color:#66d9ef>where</span> table1.idd <span style=color:#f92672>=</span> table2.idd);
-</span></span><span style=display:flex><span>table2中无时不做更新
-</span></span><span style=display:flex><span><span style=color:#66d9ef>update</span> table1 <span style=color:#66d9ef>set</span> val <span style=color:#f92672>=</span> (<span style=color:#66d9ef>select</span> val <span style=color:#66d9ef>from</span> table2 <span style=color:#66d9ef>where</span> table1.idd <span style=color:#f92672>=</span> table2.idd) <span style=color:#66d9ef>where</span> <span style=color:#66d9ef>exists</span> (<span style=color:#66d9ef>select</span> <span style=color:#ae81ff>1</span> <span style=color:#66d9ef>from</span> table2 <span style=color:#66d9ef>where</span> table1.idd <span style=color:#f92672>=</span> table2.idd)<span style=color:#960050;background-color:#1e0010>；</span>
-</span></span></code></pre></div><h2 id=8时间查询>8、时间查询</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#66d9ef>select</span> <span style=color:#f92672>*</span> <span style=color:#66d9ef>from</span> <span style=color:#66d9ef>Table_name</span> <span style=color:#66d9ef>where</span> Field_name <span style=color:#66d9ef>between</span> to_date(<span style=color:#e6db74>&#39;2003-12-19 15:00:00&#39;</span>,<span style=color:#e6db74>&#39;yyyy-mm-dd hh24:mi:ss&#39;</span>) <span style=color:#66d9ef>and</span> to_date(<span style=color:#e6db74>&#39;2003-12-19 16:00:00&#39;</span>,<span style=color:#e6db74>&#39;yyyy-mm-dd hh24:mi:ss&#39;</span>)
-</span></span></code></pre></div><h2 id=9oracle修改密码sessiong过期>9、oracle修改密码(Sessiong过期)</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#75715e>----修改密码(如果已经过期，则需要修改密码后再设置为永不过期，新密码可以与原来密码相同)
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>alter</span> <span style=color:#66d9ef>user</span>  xxx identified <span style=color:#66d9ef>by</span> xxx;
-</span></span><span style=display:flex><span><span style=color:#75715e>---查询过期时间
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>SELECT</span> <span style=color:#f92672>*</span> <span style=color:#66d9ef>FROM</span> dba_profiles s <span style=color:#66d9ef>WHERE</span> s.profile<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;DEFAULT&#39;</span> <span style=color:#66d9ef>AND</span> resource_name<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;PASSWORD_LIFE_TIME&#39;</span>;
-</span></span><span style=display:flex><span><span style=color:#75715e>---修改为永不过期
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>ALTER</span> PROFILE <span style=color:#66d9ef>DEFAULT</span> <span style=color:#66d9ef>LIMIT</span> PASSWORD_LIFE_TIME UNLIMITED;
-</span></span></code></pre></div></div><div class=pagination><a href=http://blog.maxiaofa.com/study/oracle/oracle_dblink/ class="right arrow">&#8594;</a>
-<a href=# class=top>Top</a></div></main><footer><span>&copy; <time datetime="2022-11-16 03:13:52.146055718 +0000 UTC m=+0.087410354">2022</time> . Made with <a href=https://gohugo.io>Hugo</a> using the <a href=https://github.com/EmielH/tale-hugo/>Tale</a> theme.</span></footer></body></html>
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+		
+		
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>Oracle命令 &middot; maxiaofa - blog</title>
+
+		
+		<link rel="stylesheet" href="https://blog.maxiaofa.com/css/style.css">
+		<link rel="stylesheet" href="https://blog.maxiaofa.com/css/fonts.css">
+		
+		<link rel="icon" href="https://blog.maxiaofa.com/favicon.ico"/>
+		<link rel="icon" type="image/png" sizes="32x32" href="https://blog.maxiaofa.com/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://blog.maxiaofa.com/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="https://blog.maxiaofa.com/images/apple-touch-icon.png">
+
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="maxiaofa - blog" />
+
+		<script src="https://blog.maxiaofa.com/js/darkmode.js"></script>
+	</head>
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="https://blog.maxiaofa.com/">
+					
+						<h2 class="nav-title">maxiaofa - blog</h2>
+					
+				</a>
+				<ul>
+    
+    
+        <li>
+            <a href="https://blog.maxiaofa.com/study/">
+                
+                <span>学习</span>
+                
+            </a>
+        </li>
+    
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	
+
+
+        <div class="post">
+		<div class="post-info">
+        
+</div>
+
+		<h1 class="post-title">Oracle命令</h1>
+<div class="post-line"></div>
+
+		
+
+		<h2 id="1启停oracle">1、启停Oracle</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">----暂停
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>shutdown <span style="color:#66d9ef">immediate</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">----启动
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>startup;
+</span></span></code></pre></div><h2 id="2删除">2、删除</h2>
+<h3 id="21删除表空间">2.1、删除表空间</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">DROP</span> TABLESPACE tbs_xxx <span style="color:#66d9ef">INCLUDING</span> CONTENTS <span style="color:#66d9ef">AND</span> DATAFILES;
+</span></span></code></pre></div><h3 id="22删除用户">2.2删除用户</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">user</span> xxx <span style="color:#66d9ef">cascade</span>;
+</span></span></code></pre></div><h3 id="23删除数据文件">2.3删除数据文件</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">database</span> datafile <span style="color:#e6db74">&#39;E:\xxx\xxx.DBF ’ offline drop;
+</span></span></span></code></pre></div><h3 id="24删除表数据">2.4删除表数据</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">TRUNCATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#960050;background-color:#1e0010">表名；</span>
+</span></span></code></pre></div><h3 id="25删除序列">2.5删除序列</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">DROP</span> SEQUENCE seq_sys_menu;
+</span></span></code></pre></div><h2 id="3修改">3、修改</h2>
+<h3 id="31修改字符集">3.1、修改字符集</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">--查询字符集
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">Select</span> userenv(<span style="color:#e6db74">&#39;language&#39;</span>) <span style="color:#66d9ef">From</span> dual;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">--修改字符集
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>sqlplus sys<span style="color:#f92672">/</span>sys <span style="color:#66d9ef">as</span> sysdba;
+</span></span><span style="display:flex;"><span>shutdown <span style="color:#66d9ef">immediate</span>;
+</span></span><span style="display:flex;"><span>startup mount;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">system</span> enable restricted <span style="color:#66d9ef">session</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">system</span> <span style="color:#66d9ef">set</span> job_queue_processes<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">system</span> <span style="color:#66d9ef">set</span> aq_tm_processes<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">database</span> <span style="color:#66d9ef">open</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">database</span> character <span style="color:#66d9ef">set</span> internal_use ZHS16GBK;
+</span></span><span style="display:flex;"><span>shutdown <span style="color:#66d9ef">immediate</span>;
+</span></span><span style="display:flex;"><span>startup;
+</span></span></code></pre></div><h3 id="32修改序列值">3.2、修改序列值</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">select</span> <span style="color:#66d9ef">max</span>(id) <span style="color:#66d9ef">from</span> CA_RBRVS_SCORE_DETAIL;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> SEQ_CA_RBRVS_SCORE_DETAIL.NEXTVAL <span style="color:#66d9ef">FROM</span> DUAL;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ALTER</span> SEQUENCE SEQ_CA_RBRVS_SCORE_DETAIL <span style="color:#66d9ef">INCREMENT</span> <span style="color:#66d9ef">BY</span> <span style="color:#ae81ff">351</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> SEQ_CA_RBRVS_SCORE_DETAIL.NEXTVAL <span style="color:#66d9ef">FROM</span> DUAL;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ALTER</span> SEQUENCE SEQ_CA_RBRVS_SCORE_DETAIL <span style="color:#66d9ef">INCREMENT</span> <span style="color:#66d9ef">BY</span> <span style="color:#ae81ff">1</span>;
+</span></span></code></pre></div><h2 id="4创建">4、创建</h2>
+<h3 id="41创建表空间">4.1、创建表空间</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">create</span> tablespace tbs_xxx datafile <span style="color:#e6db74">&#39;/home/xxx.dbf&#39;</span> <span style="color:#66d9ef">size</span> <span style="color:#ae81ff">1024</span>m AUTOEXTEND <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">NEXT</span> <span style="color:#ae81ff">50</span>M MAXSIZE UNLIMITED;
+</span></span></code></pre></div><h3 id="42创建用户">4.2、创建用户</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">create</span> <span style="color:#66d9ef">user</span> xxx identified <span style="color:#66d9ef">by</span> xxx <span style="color:#66d9ef">default</span> tablespace TBS_xxx quota unlimited <span style="color:#66d9ef">on</span> tbs_xxx;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">grant</span> <span style="color:#66d9ef">connect</span> <span style="color:#66d9ef">to</span> xxx;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">grant</span> resource <span style="color:#66d9ef">to</span> xxx;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">grant</span> <span style="color:#66d9ef">select</span> <span style="color:#66d9ef">on</span> v_$statname <span style="color:#66d9ef">to</span> xxx;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">grant</span> <span style="color:#66d9ef">select</span> <span style="color:#66d9ef">on</span> v_$sesstat <span style="color:#66d9ef">to</span> xxx;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">grant</span> <span style="color:#66d9ef">select</span> <span style="color:#66d9ef">on</span> v_$session <span style="color:#66d9ef">to</span> xxx;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">grant</span> <span style="color:#66d9ef">select</span> <span style="color:#66d9ef">on</span> v_$mystat <span style="color:#66d9ef">to</span> xxx;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 创建视图权限
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">VIEW</span> <span style="color:#66d9ef">TO</span> xxx;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 创建函数权限
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">ANY</span> <span style="color:#66d9ef">PROCEDURE</span> <span style="color:#66d9ef">TO</span> xxx;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 创建dblink权限
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">grant</span> <span style="color:#66d9ef">create</span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">database</span> link,<span style="color:#66d9ef">create</span> <span style="color:#66d9ef">database</span> link <span style="color:#66d9ef">to</span> xxx;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 数据泵权限
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">grant</span> <span style="color:#66d9ef">read</span>,<span style="color:#66d9ef">write</span> <span style="color:#66d9ef">on</span> directory dump_file <span style="color:#66d9ef">to</span> xxx;
+</span></span></code></pre></div><h3 id="43创建序列">4.3、创建序列</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">create</span> sequence seq_$<span style="color:#960050;background-color:#1e0010">{</span>tableName<span style="color:#960050;background-color:#1e0010">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">increment</span> <span style="color:#66d9ef">by</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">start</span> <span style="color:#66d9ef">with</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>nomaxvalue
+</span></span><span style="display:flex;"><span>nominvalue
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">cache</span> <span style="color:#ae81ff">20</span>;
+</span></span></code></pre></div><h2 id="5数据泵导入导出解决字符集问题">5、数据泵导入导出（解决字符集问题）</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>----创建expdp默认文件路径（dump_file为自定义的变量名）
+</span></span><span style="display:flex;"><span>create directory dump_file as <span style="color:#e6db74">&#39;D:\EXPDP&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>----导出命令
+</span></span><span style="display:flex;"><span>expdp xxx/xxx directory<span style="color:#f92672">=</span>dump_file dumpfile<span style="color:#f92672">=</span>xxx.dmp
+</span></span><span style="display:flex;"><span>----导入命令
+</span></span><span style="display:flex;"><span>impdp xxx/xxx directory<span style="color:#f92672">=</span>dump_file dumpfile<span style="color:#f92672">=</span>xxx.dmp full<span style="color:#f92672">=</span>y
+</span></span></code></pre></div><h2 id="6随机数">6、随机数</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>TRUNC(<span style="color:#ae81ff">1000</span><span style="color:#f92672">+</span><span style="color:#ae81ff">2000</span><span style="color:#f92672">*</span>dbms_random.value)
+</span></span></code></pre></div><h2 id="7更新一张表数据为另一张表">7、更新一张表数据为另一张表</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">update</span> table1 <span style="color:#66d9ef">set</span> table1.val <span style="color:#f92672">=</span> (<span style="color:#66d9ef">select</span> val <span style="color:#66d9ef">from</span> table2 <span style="color:#66d9ef">where</span> table1.idd <span style="color:#f92672">=</span> table2.idd);
+</span></span><span style="display:flex;"><span>table2中无时不做更新
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">update</span> table1 <span style="color:#66d9ef">set</span> val <span style="color:#f92672">=</span> (<span style="color:#66d9ef">select</span> val <span style="color:#66d9ef">from</span> table2 <span style="color:#66d9ef">where</span> table1.idd <span style="color:#f92672">=</span> table2.idd) <span style="color:#66d9ef">where</span> <span style="color:#66d9ef">exists</span> (<span style="color:#66d9ef">select</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">from</span> table2 <span style="color:#66d9ef">where</span> table1.idd <span style="color:#f92672">=</span> table2.idd)<span style="color:#960050;background-color:#1e0010">；</span>
+</span></span></code></pre></div><h2 id="8时间查询">8、时间查询</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> <span style="color:#66d9ef">Table_name</span> <span style="color:#66d9ef">where</span> Field_name <span style="color:#66d9ef">between</span> to_date(<span style="color:#e6db74">&#39;2003-12-19 15:00:00&#39;</span>,<span style="color:#e6db74">&#39;yyyy-mm-dd hh24:mi:ss&#39;</span>) <span style="color:#66d9ef">and</span> to_date(<span style="color:#e6db74">&#39;2003-12-19 16:00:00&#39;</span>,<span style="color:#e6db74">&#39;yyyy-mm-dd hh24:mi:ss&#39;</span>)
+</span></span></code></pre></div><h2 id="9oracle修改密码sessiong过期">9、oracle修改密码(Sessiong过期)</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">----修改密码(如果已经过期，则需要修改密码后再设置为永不过期，新密码可以与原来密码相同)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">user</span>  xxx identified <span style="color:#66d9ef">by</span> xxx;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">---查询过期时间
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> dba_profiles s <span style="color:#66d9ef">WHERE</span> s.profile<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;DEFAULT&#39;</span> <span style="color:#66d9ef">AND</span> resource_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;PASSWORD_LIFE_TIME&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">---修改为永不过期
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">ALTER</span> PROFILE <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">LIMIT</span> PASSWORD_LIFE_TIME UNLIMITED;
+</span></span></code></pre></div>
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="https://blog.maxiaofa.com/study/oracle/oracle_dblink/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			
+			<span>
+			&copy; <time datetime="2022-11-16 03:23:07.904158737 &#43;0000 UTC m=&#43;0.077486053">2022</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

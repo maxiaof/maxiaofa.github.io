@@ -1,7 +1,201 @@
-<!doctype html><html lang=zh-cn><head><meta name=generator content="Hugo 0.105.0"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content><title>maxiaofa - blog</title><link rel=stylesheet href=http://blog.maxiaofa.com/css/style.css><link rel=stylesheet href=http://blog.maxiaofa.com/css/fonts.css><link rel=icon href=http://blog.maxiaofa.com/favicon.ico><link rel=icon type=image/png sizes=32x32 href=http://blog.maxiaofa.com/images/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=http://blog.maxiaofa.com/images/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=http://blog.maxiaofa.com/images/apple-touch-icon.png><link href=http://blog.maxiaofa.com/index.xml rel=alternate type=application/rss+xml title="maxiaofa - blog"><script src=http://blog.maxiaofa.com/js/darkmode.js></script></head><body><nav class=nav><div class=nav-container><a href=http://blog.maxiaofa.com/><h1 class=nav-title>maxiaofa - blog</h1></a><ul><li><a href=http://blog.maxiaofa.com/study/><span>学习</span></a></li></ul></div></nav><main><div class=catalogue><a href=http://blog.maxiaofa.com/study/docker/docker%E5%91%BD%E4%BB%A4/ class=catalogue-item><div><h2 class=catalogue-title>Docker命令</h2><div class=catalogue-line></div><p>Docker命令 1.容器操作 1.1.进入容器 docker exec -it 容器ID /bin/bash</p></div></a><a href=http://blog.maxiaofa.com/study/docker/docker%E4%BD%BF%E7%94%A8oracle-11g%E4%BC%81%E4%B8%9A%E7%89%88/ class=catalogue-item><div><h2 class=catalogue-title>Docker安装Oracle 11g EE</h2><div class=catalogue-line></div><p>Docker使用Oracle11g企业版 拉取 oracle-ee-11g 镜像
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+	<meta name="generator" content="Hugo 0.105.0">
+		
+		
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta name="description" content="">
+
+		<title>maxiaofa - blog</title>
+
+		
+		<link rel="stylesheet" href="https://blog.maxiaofa.com/css/style.css">
+		<link rel="stylesheet" href="https://blog.maxiaofa.com/css/fonts.css">
+		
+		<link rel="icon" href="https://blog.maxiaofa.com/favicon.ico"/>
+		<link rel="icon" type="image/png" sizes="32x32" href="https://blog.maxiaofa.com/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://blog.maxiaofa.com/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="https://blog.maxiaofa.com/images/apple-touch-icon.png">
+
+		
+		<link href="https://blog.maxiaofa.com/index.xml" rel="alternate" type="application/rss+xml" title="maxiaofa - blog" />
+
+		<script src="https://blog.maxiaofa.com/js/darkmode.js"></script>
+	</head>
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="https://blog.maxiaofa.com/">
+					
+						<h1 class="nav-title">maxiaofa - blog</h1>
+					
+				</a>
+				<ul>
+    
+    
+        <li>
+            <a href="https://blog.maxiaofa.com/study/">
+                
+                <span>学习</span>
+                
+            </a>
+        </li>
+    
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	
+
+
+	<div class="catalogue">
+		
+			<a href="https://blog.maxiaofa.com/study/docker/docker%E5%91%BD%E4%BB%A4/" class="catalogue-item">
+    <div>
+        
+        <h2 class="catalogue-title">Docker命令</h2>
+        <div class="catalogue-line"></div>
+
+        <p>
+            Docker命令 1.容器操作 1.1.进入容器 docker exec -it 容器ID /bin/bash 
+        </p>
+    </div>
+</a>
+
+		
+			<a href="https://blog.maxiaofa.com/study/docker/docker%E4%BD%BF%E7%94%A8oracle-11g%E4%BC%81%E4%B8%9A%E7%89%88/" class="catalogue-item">
+    <div>
+        
+        <h2 class="catalogue-title">Docker安装Oracle 11g EE</h2>
+        <div class="catalogue-line"></div>
+
+        <p>
+            Docker使用Oracle11g企业版 拉取 oracle-ee-11g 镜像
 docker pull loliconneko/oracle-ee-11g 运行容器
 docker run -d --name oracle_ee_11g -p 1521:1521 loliconneko/oracle-ee-11g hostname: localhost port: 1521 sid: EE service name: EE.oracle.docker username: system password: oracle 进入容器同步时间
-#进入容器 docker exec -it oracle11g bash #同</p></div></a><a href=http://blog.maxiaofa.com/study/dos/dos%E5%91%BD%E4%BB%A4/ class=catalogue-item><div><h2 class=catalogue-title>Dos命令</h2><div class=catalogue-line></div><p>Dos命令 1.dos注释 rem 注释 2.多条合并成一条执行 cd d:/ &amp;amp;&amp;amp; cd d:/ 3.获取管理员权限 %1 %2 ver|find &amp;#34;5.&amp;#34;&amp;gt;nul&amp;amp;&amp;amp;goto :Admin mshta vbscript:createobject(&amp;#34;shell.application&amp;#34;).shellexecute(&amp;#34;%~s0&amp;#34;,&amp;#34;goto :Admin&amp;#34;,&amp;#34;&amp;#34;,&amp;#34;runas&amp;#34;,1)(window.close)&amp;amp;goto :eof :Admin</p></div></a><a href=http://blog.maxiaofa.com/study/elasticsearch/elasticsearch%E5%AE%89%E8%A3%85ik%E5%88%86%E8%AF%8D/ class=catalogue-item><div><h2 class=catalogue-title>Elasticsearch安装ik分词</h2><div class=catalogue-line></div><p>Elasticsearch安装ik分词 1.下载分词插件 下载地址： [elasticsearch-analysis-ik][https://github.com/medcl/elasticsearch-analysis-ik/releases] 下载版本需要与安装的es版本相同
+#进入容器 docker exec -it oracle11g bash #同
+        </p>
+    </div>
+</a>
+
+		
+			<a href="https://blog.maxiaofa.com/study/dos/dos%E5%91%BD%E4%BB%A4/" class="catalogue-item">
+    <div>
+        
+        <h2 class="catalogue-title">Dos命令</h2>
+        <div class="catalogue-line"></div>
+
+        <p>
+            Dos命令 1.dos注释 rem 注释 2.多条合并成一条执行 cd d:/ &amp;amp;&amp;amp; cd d:/ 3.获取管理员权限 %1 %2 ver|find &amp;#34;5.&amp;#34;&amp;gt;nul&amp;amp;&amp;amp;goto :Admin mshta vbscript:createobject(&amp;#34;shell.application&amp;#34;).shellexecute(&amp;#34;%~s0&amp;#34;,&amp;#34;goto :Admin&amp;#34;,&amp;#34;&amp;#34;,&amp;#34;runas&amp;#34;,1)(window.close)&amp;amp;goto :eof :Admin 
+        </p>
+    </div>
+</a>
+
+		
+			<a href="https://blog.maxiaofa.com/study/elasticsearch/elasticsearch%E5%AE%89%E8%A3%85ik%E5%88%86%E8%AF%8D/" class="catalogue-item">
+    <div>
+        
+        <h2 class="catalogue-title">Elasticsearch安装ik分词</h2>
+        <div class="catalogue-line"></div>
+
+        <p>
+            Elasticsearch安装ik分词 1.下载分词插件 下载地址： [elasticsearch-analysis-ik][https://github.com/medcl/elasticsearch-analysis-ik/releases] 下载版本需要与安装的es版本相同
 2.安装ik 解压--&amp;gt;将文件复制到 es的安装目录/plugin/ 重启既可生效不需要修改配置文件
 Tips：
-#下载命令 curl -o 下载文件名.zip -L 直链 curl -o ik.zip -L https://github.com/medcl/elasticsearch-analysis-ik/releases/d</p></div></a><a href=http://blog.maxiaofa.com/study/linux/linux%E5%91%BD%E4%BB%A4/ class=catalogue-item><div><h2 class=catalogue-title>Linux命令</h2><div class=catalogue-line></div><p>Linux命令 1.查询内存占比 free -m | sed -n &amp;#39;2p&amp;#39; | awk &amp;#39;{print &amp;#34;当前使用 &amp;#34;$3&amp;#34;M,最大内存 &amp;#34;$2&amp;#34;M,百分比 &amp;#34;$3/$2*100&amp;#34;%&amp;#34;}&amp;#39;</p></div></a><a href=http://blog.maxiaofa.com/study/mybatis/mybatis%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%88%86%E9%A1%B5/ class=catalogue-item><div><h2 class=catalogue-title>MyBatis一对多分页</h2><div class=catalogue-line></div><p>一对多分页(适用于一对一) 1.1 实例SQL SELECT * FROM tab_1 t1 LEFT JOIN tab_2 t2 ON t1.id = t2.t1_id LIMIT 0,10 -- 当第一个用户有十条地址数据,那么上面的查询0,10,刚好是第一个用户的分页完成,此时再进行一对多封装,将会导致封装之后,仅有一个用户数据,分页不准确 1.2 解决办法 &amp;lt;!--mybatis实体映射xml中如下配制--&amp;gt; &amp;lt;resultMap&amp;gt; ... &amp;lt;collection property=&amp;#34;t2&amp;#34; ofType=&amp;#34;tab2&amp;#34; select=&amp;#34;</p></div></a><a href=http://blog.maxiaofa.com/study/nginx/nginx%E9%85%8D%E7%BD%AE/ class=catalogue-item><div><h2 class=catalogue-title>Nginx配置</h2><div class=catalogue-line></div><p>Nginx配置 1.nginx 关闭 开启 #修改nginx.conf需要重启 #关闭nginx nginx -s stop #开启nginx nginx #重启nginx nginx -s reload #Win杀死所有nginx taskkill /f /im nginx.exe 2.nginx 80端口解析多个网站 worker_processes 1; events { worker_connections 1024; } http { include mime.types; default_type application/octet-stream; sendfile on; keepalive_tim</p></div></a><a href=http://blog.maxiaofa.com/study/oracle/oracle_dblink/ class=catalogue-item><div><h2 class=catalogue-title>Oracle_dblink</h2><div class=catalogue-line></div><p>推荐使用Datax等 1、dblink创建 -- 合并 create public database link HIS connect to 对方数据库帐号 identified by 对方数据库密码 using &amp;#39;(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 本机ipv4地址)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = orcl)))&amp;#39;; -- 不合并 create public database link HIS connect to &amp;#34;对方</p></div></a><a href=http://blog.maxiaofa.com/study/oracle/oracle%E5%91%BD%E4%BB%A4/ class=catalogue-item><div><h2 class=catalogue-title>Oracle命令</h2><div class=catalogue-line></div><p>1、启停Oracle ----暂停 shutdown immediate; ----启动 startup; 2、删除 2.1、删除表空间 DROP TABLESPACE tbs_xxx INCLUDING CONTENTS AND DATAFILES; 2.2删除用户 drop user xxx cascade; 2.3删除数据文件 alter database datafile &amp;#39;E:\xxx\xxx.DBF ’ offline drop; 2.4删除表数据 TRUNCATE TABLE 表名； 2.5删除序列 DROP SEQUENCE seq_sys_menu; 3、修改 3.1、修改字符集 --查</p></div></a></div><div class=pagination><span>1</span></div></main><footer><span>&copy; <time datetime="2022-11-16 03:13:52.146413722 +0000 UTC m=+0.087768458">2022</time> . Made with <a href=https://gohugo.io>Hugo</a> using the <a href=https://github.com/EmielH/tale-hugo/>Tale</a> theme.</span></footer></body></html>
+#下载命令 curl -o 下载文件名.zip -L 直链 curl -o ik.zip -L https://github.com/medcl/elasticsearch-analysis-ik/releases/d
+        </p>
+    </div>
+</a>
+
+		
+			<a href="https://blog.maxiaofa.com/study/linux/linux%E5%91%BD%E4%BB%A4/" class="catalogue-item">
+    <div>
+        
+        <h2 class="catalogue-title">Linux命令</h2>
+        <div class="catalogue-line"></div>
+
+        <p>
+            Linux命令 1.查询内存占比 free -m | sed -n &amp;#39;2p&amp;#39; | awk &amp;#39;{print &amp;#34;当前使用 &amp;#34;$3&amp;#34;M,最大内存 &amp;#34;$2&amp;#34;M,百分比 &amp;#34;$3/$2*100&amp;#34;%&amp;#34;}&amp;#39; 
+        </p>
+    </div>
+</a>
+
+		
+			<a href="https://blog.maxiaofa.com/study/mybatis/mybatis%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%88%86%E9%A1%B5/" class="catalogue-item">
+    <div>
+        
+        <h2 class="catalogue-title">MyBatis一对多分页</h2>
+        <div class="catalogue-line"></div>
+
+        <p>
+            一对多分页(适用于一对一) 1.1 实例SQL SELECT * FROM tab_1 t1 LEFT JOIN tab_2 t2 ON t1.id = t2.t1_id LIMIT 0,10 -- 当第一个用户有十条地址数据,那么上面的查询0,10,刚好是第一个用户的分页完成,此时再进行一对多封装,将会导致封装之后,仅有一个用户数据,分页不准确 1.2 解决办法 &amp;lt;!--mybatis实体映射xml中如下配制--&amp;gt; &amp;lt;resultMap&amp;gt; ... &amp;lt;collection property=&amp;#34;t2&amp;#34; ofType=&amp;#34;tab2&amp;#34; select=&amp;#34;
+        </p>
+    </div>
+</a>
+
+		
+			<a href="https://blog.maxiaofa.com/study/nginx/nginx%E9%85%8D%E7%BD%AE/" class="catalogue-item">
+    <div>
+        
+        <h2 class="catalogue-title">Nginx配置</h2>
+        <div class="catalogue-line"></div>
+
+        <p>
+            Nginx配置 1.nginx 关闭 开启 #修改nginx.conf需要重启 #关闭nginx nginx -s stop #开启nginx nginx #重启nginx nginx -s reload #Win杀死所有nginx taskkill /f /im nginx.exe 2.nginx 80端口解析多个网站 worker_processes 1; events { worker_connections 1024; } http { include mime.types; default_type application/octet-stream; sendfile on; keepalive_tim
+        </p>
+    </div>
+</a>
+
+		
+			<a href="https://blog.maxiaofa.com/study/oracle/oracle_dblink/" class="catalogue-item">
+    <div>
+        
+        <h2 class="catalogue-title">Oracle_dblink</h2>
+        <div class="catalogue-line"></div>
+
+        <p>
+            推荐使用Datax等 1、dblink创建 -- 合并 create public database link HIS connect to 对方数据库帐号 identified by 对方数据库密码 using &amp;#39;(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 本机ipv4地址)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = orcl)))&amp;#39;; -- 不合并 create public database link HIS connect to &amp;#34;对方
+        </p>
+    </div>
+</a>
+
+		
+			<a href="https://blog.maxiaofa.com/study/oracle/oracle%E5%91%BD%E4%BB%A4/" class="catalogue-item">
+    <div>
+        
+        <h2 class="catalogue-title">Oracle命令</h2>
+        <div class="catalogue-line"></div>
+
+        <p>
+            1、启停Oracle ----暂停 shutdown immediate; ----启动 startup; 2、删除 2.1、删除表空间 DROP TABLESPACE tbs_xxx INCLUDING CONTENTS AND DATAFILES; 2.2删除用户 drop user xxx cascade; 2.3删除数据文件 alter database datafile &amp;#39;E:\xxx\xxx.DBF ’ offline drop; 2.4删除表数据 TRUNCATE TABLE 表名； 2.5删除序列 DROP SEQUENCE seq_sys_menu; 3、修改 3.1、修改字符集 --查
+        </p>
+    </div>
+</a>
+
+		
+	</div>
+
+	<div class="pagination">
+		
+		
+
+		<span>1</span>
+	</div>
+</main>
+
+
+        		<footer>
+			
+			<span>
+			&copy; <time datetime="2022-11-16 03:23:07.904716434 &#43;0000 UTC m=&#43;0.078043750">2022</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

@@ -1,8 +1,98 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Studies on maxiaofa - blog</title><link>http://blog.maxiaofa.com/study/</link><description>Recent content in Studies on maxiaofa - blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><atom:link href="http://blog.maxiaofa.com/study/index.xml" rel="self" type="application/rss+xml"/><item><title>Docker命令</title><link>http://blog.maxiaofa.com/study/docker/docker%E5%91%BD%E4%BB%A4/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://blog.maxiaofa.com/study/docker/docker%E5%91%BD%E4%BB%A4/</guid><description>Docker命令 1.容器操作 1.1.进入容器 docker exec -it 容器ID /bin/bash</description></item><item><title>Docker安装Oracle 11g EE</title><link>http://blog.maxiaofa.com/study/docker/docker%E4%BD%BF%E7%94%A8oracle-11g%E4%BC%81%E4%B8%9A%E7%89%88/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://blog.maxiaofa.com/study/docker/docker%E4%BD%BF%E7%94%A8oracle-11g%E4%BC%81%E4%B8%9A%E7%89%88/</guid><description>Docker使用Oracle11g企业版 拉取 oracle-ee-11g 镜像
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Studies on maxiaofa - blog</title>
+    <link>https://blog.maxiaofa.com/study/</link>
+    <description>Recent content in Studies on maxiaofa - blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language><atom:link href="https://blog.maxiaofa.com/study/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker命令</title>
+      <link>https://blog.maxiaofa.com/study/docker/docker%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.maxiaofa.com/study/docker/docker%E5%91%BD%E4%BB%A4/</guid>
+      <description>Docker命令 1.容器操作 1.1.进入容器 docker exec -it 容器ID /bin/bash </description>
+    </item>
+    
+    <item>
+      <title>Docker安装Oracle 11g EE</title>
+      <link>https://blog.maxiaofa.com/study/docker/docker%E4%BD%BF%E7%94%A8oracle-11g%E4%BC%81%E4%B8%9A%E7%89%88/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.maxiaofa.com/study/docker/docker%E4%BD%BF%E7%94%A8oracle-11g%E4%BC%81%E4%B8%9A%E7%89%88/</guid>
+      <description>Docker使用Oracle11g企业版 拉取 oracle-ee-11g 镜像
 docker pull loliconneko/oracle-ee-11g 运行容器
 docker run -d --name oracle_ee_11g -p 1521:1521 loliconneko/oracle-ee-11g hostname: localhost port: 1521 sid: EE service name: EE.oracle.docker username: system password: oracle 进入容器同步时间
 #进入容器 docker exec -it oracle11g bash #同步时间 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime 修改字符集为GBK
-sqlplus sys/oracle as sysdba SQL&amp;gt; shutdown immediate; SQL&amp;gt; startup mount; SQL&amp;gt; alter system enable restricted session; SQL&amp;gt; alter system set job_queue_processes=0; SQL&amp;gt; alter system set aq_tm_processes=0; SQL&amp;gt; alter database open; SQL&amp;gt; ALTER DATABASE character set INTERNAL_USE ZHS16GBK; SQL&amp;gt; shutdown immediate; SQL&amp;gt; startup; 修改服务名为orcl</description></item><item><title>Dos命令</title><link>http://blog.maxiaofa.com/study/dos/dos%E5%91%BD%E4%BB%A4/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://blog.maxiaofa.com/study/dos/dos%E5%91%BD%E4%BB%A4/</guid><description>Dos命令 1.dos注释 rem 注释 2.多条合并成一条执行 cd d:/ &amp;amp;&amp;amp; cd d:/ 3.获取管理员权限 %1 %2 ver|find &amp;#34;5.&amp;#34;&amp;gt;nul&amp;amp;&amp;amp;goto :Admin mshta vbscript:createobject(&amp;#34;shell.application&amp;#34;).shellexecute(&amp;#34;%~s0&amp;#34;,&amp;#34;goto :Admin&amp;#34;,&amp;#34;&amp;#34;,&amp;#34;runas&amp;#34;,1)(window.close)&amp;amp;goto :eof :Admin</description></item><item><title>Elasticsearch安装ik分词</title><link>http://blog.maxiaofa.com/study/elasticsearch/elasticsearch%E5%AE%89%E8%A3%85ik%E5%88%86%E8%AF%8D/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://blog.maxiaofa.com/study/elasticsearch/elasticsearch%E5%AE%89%E8%A3%85ik%E5%88%86%E8%AF%8D/</guid><description>Elasticsearch安装ik分词 1.下载分词插件 下载地址： [elasticsearch-analysis-ik][https://github.com/medcl/elasticsearch-analysis-ik/releases] 下载版本需要与安装的es版本相同
+sqlplus sys/oracle as sysdba SQL&amp;gt; shutdown immediate; SQL&amp;gt; startup mount; SQL&amp;gt; alter system enable restricted session; SQL&amp;gt; alter system set job_queue_processes=0; SQL&amp;gt; alter system set aq_tm_processes=0; SQL&amp;gt; alter database open; SQL&amp;gt; ALTER DATABASE character set INTERNAL_USE ZHS16GBK; SQL&amp;gt; shutdown immediate; SQL&amp;gt; startup; 修改服务名为orcl</description>
+    </item>
+    
+    <item>
+      <title>Dos命令</title>
+      <link>https://blog.maxiaofa.com/study/dos/dos%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.maxiaofa.com/study/dos/dos%E5%91%BD%E4%BB%A4/</guid>
+      <description>Dos命令 1.dos注释 rem 注释 2.多条合并成一条执行 cd d:/ &amp;amp;&amp;amp; cd d:/ 3.获取管理员权限 %1 %2 ver|find &amp;#34;5.&amp;#34;&amp;gt;nul&amp;amp;&amp;amp;goto :Admin mshta vbscript:createobject(&amp;#34;shell.application&amp;#34;).shellexecute(&amp;#34;%~s0&amp;#34;,&amp;#34;goto :Admin&amp;#34;,&amp;#34;&amp;#34;,&amp;#34;runas&amp;#34;,1)(window.close)&amp;amp;goto :eof :Admin </description>
+    </item>
+    
+    <item>
+      <title>Elasticsearch安装ik分词</title>
+      <link>https://blog.maxiaofa.com/study/elasticsearch/elasticsearch%E5%AE%89%E8%A3%85ik%E5%88%86%E8%AF%8D/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.maxiaofa.com/study/elasticsearch/elasticsearch%E5%AE%89%E8%A3%85ik%E5%88%86%E8%AF%8D/</guid>
+      <description>Elasticsearch安装ik分词 1.下载分词插件 下载地址： [elasticsearch-analysis-ik][https://github.com/medcl/elasticsearch-analysis-ik/releases] 下载版本需要与安装的es版本相同
 2.安装ik 解压--&amp;gt;将文件复制到 es的安装目录/plugin/ 重启既可生效不需要修改配置文件
 Tips：
-#下载命令 curl -o 下载文件名.zip -L 直链 curl -o ik.zip -L https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.17.1/elasticsearch-analysis-ik-7.17.1.zip #解压命令： unzip 文件名.zip 文件夹 unzip ik.zip ik</description></item><item><title>Linux命令</title><link>http://blog.maxiaofa.com/study/linux/linux%E5%91%BD%E4%BB%A4/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://blog.maxiaofa.com/study/linux/linux%E5%91%BD%E4%BB%A4/</guid><description>Linux命令 1.查询内存占比 free -m | sed -n &amp;#39;2p&amp;#39; | awk &amp;#39;{print &amp;#34;当前使用 &amp;#34;$3&amp;#34;M,最大内存 &amp;#34;$2&amp;#34;M,百分比 &amp;#34;$3/$2*100&amp;#34;%&amp;#34;}&amp;#39;</description></item><item><title>MyBatis一对多分页</title><link>http://blog.maxiaofa.com/study/mybatis/mybatis%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%88%86%E9%A1%B5/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://blog.maxiaofa.com/study/mybatis/mybatis%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%88%86%E9%A1%B5/</guid><description>一对多分页(适用于一对一) 1.1 实例SQL SELECT * FROM tab_1 t1 LEFT JOIN tab_2 t2 ON t1.id = t2.t1_id LIMIT 0,10 -- 当第一个用户有十条地址数据,那么上面的查询0,10,刚好是第一个用户的分页完成,此时再进行一对多封装,将会导致封装之后,仅有一个用户数据,分页不准确 1.2 解决办法 &amp;lt;!--mybatis实体映射xml中如下配制--&amp;gt; &amp;lt;resultMap&amp;gt; ... &amp;lt;collection property=&amp;#34;t2&amp;#34; ofType=&amp;#34;tab2&amp;#34; select=&amp;#34;selectTab2List&amp;#34; column=&amp;#34;{t2_id=id}&amp;#34;/&amp;gt; &amp;lt;/resultMap&amp;gt; 其中关键点有两个 1.select=“selectTab2List” 指定嵌套语句的具体执行语句id 2. column=&amp;#34;{t2_id=id}&amp;#34; 指定嵌套语句的关联条件,我将主表的字段id,起了一个别名叫做t2_id</description></item><item><title>Nginx配置</title><link>http://blog.maxiaofa.com/study/nginx/nginx%E9%85%8D%E7%BD%AE/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://blog.maxiaofa.com/study/nginx/nginx%E9%85%8D%E7%BD%AE/</guid><description>Nginx配置 1.nginx 关闭 开启 #修改nginx.conf需要重启 #关闭nginx nginx -s stop #开启nginx nginx #重启nginx nginx -s reload #Win杀死所有nginx taskkill /f /im nginx.exe 2.nginx 80端口解析多个网站 worker_processes 1; events { worker_connections 1024; } http { include mime.types; default_type application/octet-stream; sendfile on; keepalive_timeout 65; server { listen 80; server_name hbk.hylink.net.cn; } server { listen 80; server_name hbk.applet.hylink.net.cn; } } 3.nginx 开启ssl worker_processes 1; events { worker_connections 1024; } http { include mime.types; default_type application/octet-stream; sendfile on; keepalive_timeout 65; server { listen 80; server_name 与443域名相同; rewrite ^/(.</description></item><item><title>Oracle_dblink</title><link>http://blog.maxiaofa.com/study/oracle/oracle_dblink/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://blog.maxiaofa.com/study/oracle/oracle_dblink/</guid><description>推荐使用Datax等 1、dblink创建 -- 合并 create public database link HIS connect to 对方数据库帐号 identified by 对方数据库密码 using &amp;#39;(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 本机ipv4地址)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = orcl)))&amp;#39;; -- 不合并 create public database link HIS connect to &amp;#34;对方数据库帐号&amp;#34; identified by &amp;#34;对方数据库密码&amp;#34; using &amp;#39;tnsnames.ora中添加的名字&amp;#39;; 2、修改Listener后重启监听(设置dblink必须重启否则不生效) 计算机-&amp;gt;管理-&amp;gt;服务，找到oracle的自启服务，找到OracleOraDb11g_home1TNSListener</description></item><item><title>Oracle命令</title><link>http://blog.maxiaofa.com/study/oracle/oracle%E5%91%BD%E4%BB%A4/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://blog.maxiaofa.com/study/oracle/oracle%E5%91%BD%E4%BB%A4/</guid><description>1、启停Oracle ----暂停 shutdown immediate; ----启动 startup; 2、删除 2.1、删除表空间 DROP TABLESPACE tbs_xxx INCLUDING CONTENTS AND DATAFILES; 2.2删除用户 drop user xxx cascade; 2.3删除数据文件 alter database datafile &amp;#39;E:\xxx\xxx.DBF ’ offline drop; 2.4删除表数据 TRUNCATE TABLE 表名； 2.5删除序列 DROP SEQUENCE seq_sys_menu; 3、修改 3.1、修改字符集 --查询字符集 Select userenv(&amp;#39;language&amp;#39;) From dual; --修改字符集 sqlplus sys/sys as sysdba; shutdown immediate; startup mount; alter system enable restricted session; alter system set job_queue_processes=0; alter system set aq_tm_processes=0; alter database open; alter database character set internal_use ZHS16GBK; shutdown immediate; startup; 3.</description></item></channel></rss>
+#下载命令 curl -o 下载文件名.zip -L 直链 curl -o ik.zip -L https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.17.1/elasticsearch-analysis-ik-7.17.1.zip #解压命令： unzip 文件名.zip 文件夹 unzip ik.zip ik </description>
+    </item>
+    
+    <item>
+      <title>Linux命令</title>
+      <link>https://blog.maxiaofa.com/study/linux/linux%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.maxiaofa.com/study/linux/linux%E5%91%BD%E4%BB%A4/</guid>
+      <description>Linux命令 1.查询内存占比 free -m | sed -n &amp;#39;2p&amp;#39; | awk &amp;#39;{print &amp;#34;当前使用 &amp;#34;$3&amp;#34;M,最大内存 &amp;#34;$2&amp;#34;M,百分比 &amp;#34;$3/$2*100&amp;#34;%&amp;#34;}&amp;#39; </description>
+    </item>
+    
+    <item>
+      <title>MyBatis一对多分页</title>
+      <link>https://blog.maxiaofa.com/study/mybatis/mybatis%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%88%86%E9%A1%B5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.maxiaofa.com/study/mybatis/mybatis%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%88%86%E9%A1%B5/</guid>
+      <description>一对多分页(适用于一对一) 1.1 实例SQL SELECT * FROM tab_1 t1 LEFT JOIN tab_2 t2 ON t1.id = t2.t1_id LIMIT 0,10 -- 当第一个用户有十条地址数据,那么上面的查询0,10,刚好是第一个用户的分页完成,此时再进行一对多封装,将会导致封装之后,仅有一个用户数据,分页不准确 1.2 解决办法 &amp;lt;!--mybatis实体映射xml中如下配制--&amp;gt; &amp;lt;resultMap&amp;gt; ... &amp;lt;collection property=&amp;#34;t2&amp;#34; ofType=&amp;#34;tab2&amp;#34; select=&amp;#34;selectTab2List&amp;#34; column=&amp;#34;{t2_id=id}&amp;#34;/&amp;gt; &amp;lt;/resultMap&amp;gt; 其中关键点有两个 1.select=“selectTab2List” 指定嵌套语句的具体执行语句id 2. column=&amp;#34;{t2_id=id}&amp;#34; 指定嵌套语句的关联条件,我将主表的字段id,起了一个别名叫做t2_id </description>
+    </item>
+    
+    <item>
+      <title>Nginx配置</title>
+      <link>https://blog.maxiaofa.com/study/nginx/nginx%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.maxiaofa.com/study/nginx/nginx%E9%85%8D%E7%BD%AE/</guid>
+      <description>Nginx配置 1.nginx 关闭 开启 #修改nginx.conf需要重启 #关闭nginx nginx -s stop #开启nginx nginx #重启nginx nginx -s reload #Win杀死所有nginx taskkill /f /im nginx.exe 2.nginx 80端口解析多个网站 worker_processes 1; events { worker_connections 1024; } http { include mime.types; default_type application/octet-stream; sendfile on; keepalive_timeout 65; server { listen 80; server_name hbk.hylink.net.cn; } server { listen 80; server_name hbk.applet.hylink.net.cn; } } 3.nginx 开启ssl worker_processes 1; events { worker_connections 1024; } http { include mime.types; default_type application/octet-stream; sendfile on; keepalive_timeout 65; server { listen 80; server_name 与443域名相同; rewrite ^/(.</description>
+    </item>
+    
+    <item>
+      <title>Oracle_dblink</title>
+      <link>https://blog.maxiaofa.com/study/oracle/oracle_dblink/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.maxiaofa.com/study/oracle/oracle_dblink/</guid>
+      <description>推荐使用Datax等 1、dblink创建 -- 合并 create public database link HIS connect to 对方数据库帐号 identified by 对方数据库密码 using &amp;#39;(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 本机ipv4地址)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = orcl)))&amp;#39;; -- 不合并 create public database link HIS connect to &amp;#34;对方数据库帐号&amp;#34; identified by &amp;#34;对方数据库密码&amp;#34; using &amp;#39;tnsnames.ora中添加的名字&amp;#39;; 2、修改Listener后重启监听(设置dblink必须重启否则不生效) 计算机-&amp;gt;管理-&amp;gt;服务，找到oracle的自启服务，找到OracleOraDb11g_home1TNSListener </description>
+    </item>
+    
+    <item>
+      <title>Oracle命令</title>
+      <link>https://blog.maxiaofa.com/study/oracle/oracle%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.maxiaofa.com/study/oracle/oracle%E5%91%BD%E4%BB%A4/</guid>
+      <description>1、启停Oracle ----暂停 shutdown immediate; ----启动 startup; 2、删除 2.1、删除表空间 DROP TABLESPACE tbs_xxx INCLUDING CONTENTS AND DATAFILES; 2.2删除用户 drop user xxx cascade; 2.3删除数据文件 alter database datafile &amp;#39;E:\xxx\xxx.DBF ’ offline drop; 2.4删除表数据 TRUNCATE TABLE 表名； 2.5删除序列 DROP SEQUENCE seq_sys_menu; 3、修改 3.1、修改字符集 --查询字符集 Select userenv(&amp;#39;language&amp;#39;) From dual; --修改字符集 sqlplus sys/sys as sysdba; shutdown immediate; startup mount; alter system enable restricted session; alter system set job_queue_processes=0; alter system set aq_tm_processes=0; alter database open; alter database character set internal_use ZHS16GBK; shutdown immediate; startup; 3.</description>
+    </item>
+    
+  </channel>
+</rss>
