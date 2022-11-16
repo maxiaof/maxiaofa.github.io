@@ -22,7 +22,7 @@ jobs:
           extended: true
 
       - name: Build
-        run: hugo --minify --gc
+        run: hugo --baseUrl="https://blog.maxiaofa.com/" --gc 
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
